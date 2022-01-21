@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "GroupoAdmin",
-    "password": "Groupomania",
-    "database": "Groupomania",
-    "host": "127.0.0.1",
+    "username": "groupomania_bdd",
+    "password": "groupomania_bdd",
+    "database": "groupomania_bdd",
+    "host": "https://www.db4free.net",
     "dialect": "mysql"
   }
 }

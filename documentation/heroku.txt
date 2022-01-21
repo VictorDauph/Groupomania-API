@@ -4,3 +4,10 @@ https://www.youtube.com/watch?v=r2S89Hm1Uq0&ab_channel=RaddyTheBrand
 
 nom de l'application:
 victor-groupomania-api
+
+
+pour mettre à jour sur Heroku
+git push heroku master
+
+pour voir les logs du serveur 
+heroku logs --tail  
