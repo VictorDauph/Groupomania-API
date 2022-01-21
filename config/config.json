@@ -1,4 +1,3 @@
-/* faire les migrations depuis la version locale.*/
 {
   "development": {
     "username": "groupomania_bdd",
