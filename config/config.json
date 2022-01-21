@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "GroupoAdmin",
+    "password": "Groupomania",
+    "database": "Groupomania",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
