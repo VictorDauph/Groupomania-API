@@ -1,0 +1,6 @@
+guide d'installation du serveur node de l'API sur le site heroku
+https://dashboard.heroku.com/apps/victor-groupomania-api/deploy/heroku-git
+https://www.youtube.com/watch?v=r2S89Hm1Uq0&ab_channel=RaddyTheBrand
+
+nom de l'application:
+victor-groupomania-api
