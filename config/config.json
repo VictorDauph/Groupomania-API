@@ -3,7 +3,7 @@
     "username": "groupomania_bdd",
     "password": "groupomania_bdd",
     "database": "groupomania_bdd",
-    "host": "db4free.net:3306",
+    "host": "db4free.net",
     "dialect": "mysql"
   }
 }
