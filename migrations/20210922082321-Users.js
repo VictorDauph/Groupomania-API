@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable("users", {
+    return queryInterface.createTable("Users", {
       userId: { //On peut spécifier tous les attributs de la colonne id:
         type: Sequelize.STRING(100),
         unique: true,
@@ -29,6 +29,6 @@ module.exports = {
 },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("users")
+    return queryInterface.dropTable("Users")
   }
 };

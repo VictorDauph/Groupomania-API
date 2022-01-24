@@ -2,14 +2,14 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.addConstraint('posts',
+    return queryInterface.addConstraint('Posts',
     {
     fields: ["userId"],
     type: 'foreign key',
     name: 'userIdFk',
     references: 
     { //Required field
-      table: 'users',
+      table: 'Users',
       field: 'userId',
     },
     onDelete: 'cascade',
@@ -18,6 +18,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.removeConstraint("posts","userIdFk")
+    return queryInterface.removeConstraint("Posts","userIdFk")
   }
 };

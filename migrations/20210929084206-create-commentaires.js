@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('comments', {
+    await queryInterface.createTable('Comments', {
       commentId: {
         type: Sequelize.INTEGER(11),
         allowNull:false,
@@ -34,27 +34,27 @@ updatedAt: {
   },
 
   },);
-  await queryInterface.addConstraint('comments',
+  await queryInterface.addConstraint('Comments',
     {
     fields: ["userId"],
     type: 'foreign key',
     name: 'userIdCommentFk',
     references: 
     { //Required field
-      table: 'users',
+      table: 'Users',
       field: 'userId',
     },
     onDelete: 'cascade',
     onUpdate: 'cascade'
   });
-  await queryInterface.addConstraint('comments',
+  await queryInterface.addConstraint('Comments',
   {
   fields: ["postId"],
   type: 'foreign key',
   name: 'postIdCommentFk',
   references: 
   { //Required field
-    table: 'posts',
+    table: 'Posts',
     field: 'postId',
   },
   onDelete: 'cascade',
@@ -64,6 +64,6 @@ updatedAt: {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('comments');
+    await queryInterface.dropTable('Comments');
   }
 };

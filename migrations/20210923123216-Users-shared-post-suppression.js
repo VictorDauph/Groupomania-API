@@ -2,11 +2,11 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => { //suppression colonne sharedPosts
-    return queryInterface.removeColumn("users", "sharedPosts")
+    return queryInterface.removeColumn("Users", "sharedPosts")
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.addColumn("users", "sharedPosts",
+    return queryInterface.addColumn("Users", "sharedPosts",
     {
       type: Sequelize.JSON,
       defaultValue:"[]"
