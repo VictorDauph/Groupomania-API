@@ -85,7 +85,7 @@ exports.likePost= (req, res, next) =>{
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
           upload_preset: 'dev_setups',
       });
-      console.log(uploadResponse);
+      console.log("uploadResponse",uploadResponse);
       res.json({ msg: 'yaya' });
     } catch (err) {
       console.error(err);
