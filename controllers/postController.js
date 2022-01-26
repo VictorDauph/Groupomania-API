@@ -83,7 +83,7 @@ exports.likePost= (req, res, next) =>{
     try {
       const fileStr = req.body.data;
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-          upload_preset: 'dev_setups',
+          upload_preset: 'Goupomania-pictures',
       });
       console.log("uploadResponse",uploadResponse);
       res.json({ msg: 'yaya' });
