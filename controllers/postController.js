@@ -81,6 +81,7 @@ exports.likePost= (req, res, next) =>{
   console.log("demande de création de post autorisée")
 
     try {
+      console.log("req.body.data",req.body.data)
       const fileStr = req.body.data;
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
           upload_preset: 'Goupomania-pictures',
