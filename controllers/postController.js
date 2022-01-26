@@ -77,7 +77,7 @@ exports.likePost= (req, res, next) =>{
 
 
 //cette fonction sert à créer des posts et est exportée pour le fichier router postRoutes.js
- exports.createPost = (req, res, next) =>{
+ exports.createPost = async (req, res, next) =>{
   console.log("demande de création de post autorisée")
 
     try {
