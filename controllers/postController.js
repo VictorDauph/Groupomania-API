@@ -5,6 +5,8 @@ const Comment=require("../models/comment")
 //Cette ligne importe file system, qui permet de gérer des fichiers (notemment pour la suppression d'images du dossier images)
 const fs = require('fs');
 
+//Cette ligne importe file system, qui permet de gérer des fichiers (notemment pour la suppression d'images du dossier images)
+const { cloudinary } = require('../middleware/cloudinary-config');
 
 //cette fonction sert à liker et disliker les posts
 exports.likePost= (req, res, next) =>{
@@ -77,18 +79,33 @@ exports.likePost= (req, res, next) =>{
 //cette fonction sert à créer des posts et est exportée pour le fichier router postRoutes.js
  exports.createPost = (req, res, next) =>{
   console.log("demande de création de post autorisée")
-    const postObject = req.body;
-    console.log("création du post", postObject)
-    const post = new Post ({
-      ...postObject, //Cet opérateur est capable de créer automatiquement un objet à partir de l'objet Post et des données contenues dans la requête.
-      imageUrl: req.file.filename, //sert à créer une URL pour retrouver l'image
-      usersLiked : [],
-      usersdisLiked : []
-    });
-    post.save() //Save est une méthode des schémas de données qui sauvegarde un objet dans la base.
-    .then(() => res.status(201).json({message: 'objet enregistré'}))
-    .catch(error => res.status(400).json({message:error.message}));  
-  };
+
+    try {
+      const fileStr = req.body.data;
+      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+          upload_preset: 'dev_setups',
+      });
+      console.log(uploadResponse);
+      res.json({ msg: 'yaya' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ err: 'Something went wrong' });
+    }
+
+    /*
+      const postObject = req.body;
+      console.log("création du post", postObject)
+      const post = new Post ({
+        ...postObject, //Cet opérateur est capable de créer automatiquement un objet à partir de l'objet Post et des données contenues dans la requête.
+        imageUrl: req.file.filename, //sert à créer une URL pour retrouver l'image
+        usersLiked : [],
+        usersdisLiked : []
+      });
+      post.save() //Save est une méthode des schémas de données qui sauvegarde un objet dans la base.
+      .then(() => res.status(201).json({message: 'objet enregistré'}))
+      .catch(error => res.status(400).json({message:error.message}));  
+  */
+  }; 
 
 //fonction de suppression des posts
   exports.deletePost = (req, res, next) =>{
