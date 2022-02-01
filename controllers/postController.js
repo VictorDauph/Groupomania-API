@@ -80,7 +80,7 @@ exports.likePost= (req, res, next) =>{
  exports.createPost = async (req, res, next) =>{
   console.log("demande de création de post autorisée")
   const title= req.body.title.split(' ').join('_')+Date.now()
-  console.log(JSON.parse(req.body) )
+  console.log(req.body.data.type )
 
     try {
       //On récupère l'image sous forme de string depuis la requête
