@@ -86,7 +86,7 @@ exports.likePost= (req, res, next) =>{
       //on upload l'image sur cloudinary
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
           //upload presets correspond au nom du presets à utiliser sur cloudinary, configuré au préalable directement sur cloudinary.
-          upload_preset: 'Goupomania-pictures',
+          upload_preset: 'Groupomania-pictures',
       });
       console.log(uploadResponse);
       res.json({ msg: 'yaya' });
