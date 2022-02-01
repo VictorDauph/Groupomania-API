@@ -84,11 +84,12 @@ exports.likePost= (req, res, next) =>{
       //On récupère l'image sous forme de string depuis la requête
       console.log("requête d'enregistrement :", req.body)
       const fileStr = req.body.data;
+      const title= req.body.title.split(' ').join('_')+Date.now()
       //on upload l'image sur cloudinary
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
           //upload presets correspond au nom du presets à utiliser sur cloudinary, configuré au préalable directement sur cloudinary.
           upload_preset: 'Groupomania-pictures',
-          //public_id:'gogosvdsdle'
+          public_id:title
       });
       console.log(uploadResponse);
       res.json({ msg: 'image uploadée' });
