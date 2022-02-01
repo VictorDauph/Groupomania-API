@@ -79,15 +79,7 @@ exports.likePost= (req, res, next) =>{
 //cette fonction sert à créer des posts et est exportée pour le fichier router postRoutes.js
  exports.createPost = async (req, res, next) =>{
   console.log("demande de création de post autorisée")
-  //dictionnaire des extensions de fichiers
-  const MIME_TYPES = { 
-    'image/jpg': 'jpg',
-    'image/jpeg': 'jpg',
-    'image/png': 'png'
-  };
-    const title= req.body.title.split(' ').join('_')+Date.now()
-    console.log(JSON.parse(req.body))
-
+  const title= req.body.title.split(' ').join('_')+Date.now()
 
     try {
       //On récupère l'image sous forme de string depuis la requête
