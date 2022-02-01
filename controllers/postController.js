@@ -98,7 +98,6 @@ exports.likePost= (req, res, next) =>{
       res.status(500).json({ err: 'Something went wrong' });
     }
 
-
     /*
       const postObject = req.body;
       console.log("création du post", postObject)
