@@ -80,11 +80,8 @@ exports.likePost= (req, res, next) =>{
  exports.createPost = async (req, res, next) =>{
   console.log("demande de création de post autorisée")
   const title= req.body.title.split(' ').join('_')+Date.now()
-  console.log("req.body.data.type",req.body.data.type )
-
     try {
       //On récupère l'image sous forme de string depuis la requête
-      //console.log("requête d'enregistrement :", req.body)
       const fileStr = req.body.data;
       //on upload l'image sur cloudinary
       const uploadResponseCloudinary = await cloudinary.uploader.upload(fileStr, {
