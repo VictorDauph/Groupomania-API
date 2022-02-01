@@ -81,17 +81,20 @@ exports.likePost= (req, res, next) =>{
   console.log("demande de création de post autorisée")
 
     try {
-      console.log("req.body.data",req.body) //c'est undefined. 
+      //On récupère l'image sous forme de string depuis la requête
       const fileStr = req.body.data;
+      //on upload l'image sur cloudinary
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-          upload_preset: 'Goupomania-pictures',
+          //upload presets correspond au nom du presets à utiliser sur cloudinary, configuré au préalable directement sur cloudinary.
+          upload_preset: 'tuto_cloudinary_preset',
       });
-      console.log("uploadResponse",uploadResponse);
+      console.log(uploadResponse);
       res.json({ msg: 'yaya' });
     } catch (err) {
       console.error(err);
       res.status(500).json({ err: 'Something went wrong' });
     }
+
 
     /*
       const postObject = req.body;
