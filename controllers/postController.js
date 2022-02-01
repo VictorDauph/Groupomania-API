@@ -86,32 +86,32 @@ exports.likePost= (req, res, next) =>{
       const fileStr = req.body.data;
       const title= req.body.title.split(' ').join('_')+Date.now()
       //on upload l'image sur cloudinary
-      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      const uploadResponseCloudinary = await cloudinary.uploader.upload(fileStr, {
           //upload presets correspond au nom du presets à utiliser sur cloudinary, configuré au préalable directement sur cloudinary.
           upload_preset: 'Groupomania-pictures',
           public_id:title
-      }).then(()=>{
-        console.log(uploadResponse);
-        res.json({ msg: 'image uploadée' });
       });
+      const uploadResponseDatabase = await createPost()
+      console.log(uploadResponseCloudinary);
     } catch (err) {
       console.error(err);
       res.status(500).json({ err: 'Something went wrong' });
     }
 
-    /*
+    function createPost(){
       const postObject = req.body;
       console.log("création du post", postObject)
       const post = new Post ({
         ...postObject, //Cet opérateur est capable de créer automatiquement un objet à partir de l'objet Post et des données contenues dans la requête.
-        imageUrl: req.file.filename, //sert à créer une URL pour retrouver l'image
+        imageUrl: title, //sert à créer une URL pour retrouver l'image
         usersLiked : [],
         usersdisLiked : []
       });
       post.save() //Save est une méthode des schémas de données qui sauvegarde un objet dans la base.
       .then(() => res.status(201).json({message: 'objet enregistré'}))
       .catch(error => res.status(400).json({message:error.message}));  
-  */
+    }
+  
   }; 
 
 //fonction de suppression des posts
