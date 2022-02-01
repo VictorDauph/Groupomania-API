@@ -79,12 +79,12 @@ exports.likePost= (req, res, next) =>{
 //cette fonction sert à créer des posts et est exportée pour le fichier router postRoutes.js
  exports.createPost = async (req, res, next) =>{
   console.log("demande de création de post autorisée")
+    const title= req.body.title.split(' ').join('_')+Date.now()
 
     try {
       //On récupère l'image sous forme de string depuis la requête
       //console.log("requête d'enregistrement :", req.body)
       const fileStr = req.body.data;
-      const title= req.body.title.split(' ').join('_')+Date.now()
       //on upload l'image sur cloudinary
       const uploadResponseCloudinary = await cloudinary.uploader.upload(fileStr, {
           //upload presets correspond au nom du presets à utiliser sur cloudinary, configuré au préalable directement sur cloudinary.
@@ -100,7 +100,7 @@ exports.likePost= (req, res, next) =>{
 
     function createPost(){
       const postObject = req.body;
-      console.log("création du post", postObject)
+      console.log("création du post", postObject.title)
       const post = new Post ({
         ...postObject, //Cet opérateur est capable de créer automatiquement un objet à partir de l'objet Post et des données contenues dans la requête.
         imageUrl: title, //sert à créer une URL pour retrouver l'image
