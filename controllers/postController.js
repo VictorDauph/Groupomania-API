@@ -86,7 +86,7 @@ exports.likePost= (req, res, next) =>{
     'image/png': 'png'
   };
     const title= req.body.title.split(' ').join('_')+Date.now()
-
+    console.log(JSON.parse(req.body))
 
 
     try {
