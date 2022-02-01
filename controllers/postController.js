@@ -82,6 +82,7 @@ exports.likePost= (req, res, next) =>{
 
     try {
       //On récupère l'image sous forme de string depuis la requête
+      console.log("requête d'enregistrement :", req.body)
       const fileStr = req.body.data;
       //on upload l'image sur cloudinary
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
