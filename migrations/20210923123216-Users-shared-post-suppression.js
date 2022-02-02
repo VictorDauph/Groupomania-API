@@ -6,10 +6,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.addColumn("Users", "sharedPosts",
-    {
-      type: Sequelize.JSON,
-      defaultValue:"[]"
-  }
-    )}
+    return 
+    }
 };
