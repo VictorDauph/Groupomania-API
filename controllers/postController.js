@@ -117,7 +117,7 @@ exports.likePost= (req, res, next) =>{
     return Post.findOne({ where: {postId: req.params.postId }}) //on cherche l'objet dans la base de données
     .then( post => {
         
-        const filename = post.imageUrl //filename récupère le nom du fichier à supprimer
+        const filename = "Groupomania-pictures/"+post.imageUrl //filename récupère le nom du fichier à supprimer
         cloudinary.uploader.destroy(filename, ()=>{//uploader destroy supprime le fichier image, puis le callback supprime le post        
           post.destroy({ where: {postId: req.params.postId }})
           .then(() => res.status(200).json({ message: 'post supprimé'}))
