@@ -3,9 +3,6 @@ const Post= require('../models/post');
 const Comment=require("../models/comment")
 
 //Cette ligne importe file system, qui permet de gérer des fichiers (notemment pour la suppression d'images du dossier images)
-const fs = require('fs');
-
-//Cette ligne importe file system, qui permet de gérer des fichiers (notemment pour la suppression d'images du dossier images)
 const { cloudinary } = require('../middleware/cloudinary-config');
 
 //cette fonction sert à liker et disliker les posts
@@ -121,8 +118,7 @@ exports.likePost= (req, res, next) =>{
     .then( post => {
         
         const filename = post.imageUrl //filename récupère le nom du fichier à supprimer
-        fs.unlink(`images/${filename}`, ()=> { //fs.unlink supprime le fichier image, puis le callback supprime le post
-        
+        cloudinary.uploader.destroy(filename, ()=>{//uploader destroy supprime le fichier image, puis le callback supprime le post        
           post.destroy({ where: {postId: req.params.postId }})
           .then(() => res.status(200).json({ message: 'post supprimé'}))
           .catch(error => res.status(404).json({error}));
