@@ -42,7 +42,6 @@ app.use((req, res, next) => {
   next();
 }); 
 
-
 //Ce middleware parse le body de toutes les requêtes en JSON pour être utilisables.
 app.use(
   cors(),
