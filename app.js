@@ -48,7 +48,7 @@ app.use(
   cors(),
   limiter,
   helmet(), //helmetJS pour sécuriser les headers
-  express.json(),
+  express.json({limit: '25mb'}),
 );
 
 //Ce middleware sert à gérer les requêtes get d'images
