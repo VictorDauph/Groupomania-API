@@ -56,7 +56,7 @@ server.on('error', errorHandler);
 server.on('listening', () => {
   const address = server.address();
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
-  console.log('Listening on ' + bind +" up");
+  console.log('Listening on ' + bind);
 });
 
 //cette ligne sert à déterminer le port que le serveur doit écouter. process.env.port sert à utiliser le port fourni par l'environnement de développement. Port 3000 par défaut.
